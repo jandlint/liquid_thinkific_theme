@@ -17,7 +17,7 @@
 }
 
 .product-landing .section-title {
-  margin: 0 0 24px;
+  margin-bottom: 24px;
 }
 
 .fancy-landing .course-curriculum .curriculum-chapter-header {
@@ -33,6 +33,10 @@
   background-color: rgba(255, 255, 255, 0.4);
 }
 
+.fancy-landing .course-curriculum .chapter-list-item:last-child {
+  padding-bottom: 15px;
+}
+
 @media only screen and (min-width: 768px) {
   .product-banner {
     height: 500px;
@@ -40,7 +44,6 @@
 }
 
 @media only screen and (max-width: 970px) {
-
   .product-banner {
     height: 400px;
   }

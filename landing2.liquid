@@ -1,35 +1,33 @@
 <div class='product-landing fancy-landing'>
   <section class='product-banner' style="background:url('{{page.course_banner_url}}'); background-size: cover;">
-    <div class="product-info-block">
-      <div class='title-block'>
-        <h1 class='product__title'>
-          {{ page.course_name }}
-        </h1>
-        <span class='product__subtitle'>
-          {% if page.has_course_subtitle %}
-            {{ page.course_subtitle }}
-          {% endif %}
-          {{ page.course_instructor_full_name }}
-        </span>
-        {% if page.has_course_intro_video %}
-          {% include 'course_intro_video' %}
+    <div class='title-block'>
+      <h1 class='product__title'>
+        {{ page.course_name }}
+      </h1>
+      <span class='product__subtitle'>
+        {% if page.has_course_subtitle %}
+          {{ page.course_subtitle }}
         {% endif %}
-      </div>
-      <div class='product-main-cta'>
-        <div class='column'>
-          <div class='row'>
-            <div class='col-sm-12'>
-              {% if page.show_enroll_in_free_trial_link %}
-                <a href="{{ page.free_trial_enrollment_url }}" class="btn btn-secondary btn-top-free-trial">Free Trial</a>
-              {% endif %}
-              {% if page.show_purchase_link %}
-                <a href="{{ page.buy_course_url }}" class="btn btn-primary btn-purchase">Buy Now</a>
-              {% elsif page.show_resume_link %}
-                <a href="{{ page.resume_course_url }}" class="btn btn-primary btn_resume_course">Resume Course</a>
-              {% elsif page.show_enroll_for_free_link %}
-                <a href="{{ page.enroll_for_free_url }}" class="btn btn-primary btn-purchase">Enroll for Free</a>
-              {% endif %}
-            </div>
+        {{ page.course_instructor_full_name }}
+      </span>
+      {% if page.has_course_intro_video %}
+        {% include 'course_intro_video' %}
+      {% endif %}
+    </div>
+    <div class='product-main-cta'>
+      <div class='column'>
+        <div class='row'>
+          <div class='col-sm-12'>
+            {% if page.show_enroll_in_free_trial_link %}
+              <a href="{{ page.free_trial_enrollment_url }}" class="btn btn-secondary btn-top-free-trial">Free Trial</a>
+            {% endif %}
+            {% if page.show_purchase_link %}
+              <a href="{{ page.buy_course_url }}" class="btn btn-primary btn-purchase">Buy Now</a>
+            {% elsif page.show_resume_link %}
+              <a href="{{ page.resume_course_url }}" class="btn btn-primary btn_resume_course">Resume Course</a>
+            {% elsif page.show_enroll_for_free_link %}
+              <a href="{{ page.enroll_for_free_url }}" class="btn btn-primary btn-purchase">Enroll for Free</a>
+            {% endif %}
           </div>
         </div>
       </div>
