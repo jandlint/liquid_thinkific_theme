@@ -37,6 +37,14 @@
   padding-bottom: 15px;
 }
 
+.carousel-indicators li {
+  border-color: #5b5b5b;
+}
+
+.carousel-indicators li.active {
+  background-color: #373737;
+}
+
 @media only screen and (min-width: 768px) {
   .product-banner {
     height: 500px;

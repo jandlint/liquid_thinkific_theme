@@ -1,3 +1,4 @@
+
 <div class='product-landing fancy-landing'>
   <section class='product-banner' style="background:url('{{page.course_banner_url}}'); background-size: cover;">
     <div class='title-block'>
@@ -76,7 +77,7 @@
             <div class="tab-content col-md-7 col-md-offset-1 col-xs-12">
               {% for chapter in page.course.chapters %}
                 {% assign index = forloop.index + 1 %}
-                  {% if index == 1%}
+                  {% if index == 1 %}
                     <div id="chapter{{index}}" class="tab-pane fade in active">
                   {% else %}
                     <div id="chapter{{index}}" class="tab-pane fade in">
@@ -110,6 +111,10 @@
     </div>
   </section>
 
+  {% if page.reviews_enabled && page.approved_reviews_count > 0 %}
+    {% include "course_review" course:page.course %}
+  {% endif %}
+
   <section class='course-instructor'>
     <div class='column'>
       <div class='row'>
@@ -139,10 +144,6 @@
       </div>
     </div>
   </section>
-
-  {% if page.reviews_enabled && page.approved_reviews_count > 0 %}
-    {% include "course_review" course:page.course %}
-  {% endif %}
 
   <section class='product-body-button-block'>
     <div class='product-main-cta'>
