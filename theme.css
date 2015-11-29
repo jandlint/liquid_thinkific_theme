@@ -6,17 +6,31 @@
   z-index: 1;
 }
 
-.product-landing
-.product-banner {
+.product-landing .product-banner {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://s3.amazonaws.com/thinkific/courses/showcase_000/008/1831448750942.original.jpg?1448750942') 70% 10% no-repeat !important;
   background-color: #56c0f8;
   background-size: cover !important;
 }
 
-.product-landing
-.product-banner
-.title-block {
+.product-landing .product-banner .title-block {
   padding-top: 90px;
+}
+
+.product-landing .section-title {
+  margin: 0 0 24px;
+}
+
+.fancy-landing .course-curriculum .curriculum-chapter-header {
+  padding: 0 !important;
+}
+
+.tab-content {
+  background-color: #FFF;
+  min-height: 100%;
+}
+
+.nav>li>a:hover {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 @media only screen and (min-width: 768px) {
