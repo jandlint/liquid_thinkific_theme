@@ -1,0 +1,41 @@
+.navbar {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.product-landing
+.product-banner {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://s3.amazonaws.com/thinkific/courses/showcase_000/008/1831448750942.original.jpg?1448750942') 70% 10% no-repeat !important;
+  background-color: #56c0f8;
+  background-size: cover !important;
+}
+
+.product-landing
+.product-banner
+.title-block {
+  padding-top: 90px;
+}
+
+@media only screen and (min-width: 768px) {
+  .product-banner {
+    height: 500px;
+  }
+}
+
+@media only screen and (max-width: 970px) {
+
+  .product-banner {
+    height: 400px;
+  }
+
+  .navbar-default .navbar-collapse {
+    background-color: #e7e7e7;
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    color: #5b5b5b;
+  }
+}

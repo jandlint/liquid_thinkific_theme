@@ -1,0 +1,203 @@
+<div class='product-landing fancy-landing'>
+    <section class='product-banner' style="background:url('{{page.course_banner_url}}'); background-size: cover;">
+      <div class="product-info-block">
+        <div class='title-block'>
+          <h1 class='product__title'>
+            {{ page.course_name }}
+          </h1>
+          <span class='product__subtitle'>
+            {% if page.has_course_subtitle %}
+              {{ page.course_subtitle }}
+            {% endif %}
+            {{ page.course_instructor_full_name }}
+          </span>
+          {% if page.has_course_intro_video %}
+            {% include 'course_intro_video' %}
+          {% endif %}
+        </div>
+        <div class='product-main-cta'>
+          <div class='column'>
+            <div class='row'>
+              <div class='col-sm-12'>
+                {% if page.show_enroll_in_free_trial_link %}
+                  <a href="{{ page.free_trial_enrollment_url }}" class="btn btn-secondary btn-top-free-trial">Free Trial</a>
+                {% endif %}
+                {% if page.show_purchase_link %}
+                  <a href="{{ page.buy_course_url }}" class="btn btn-primary btn-purchase">Buy Now</a>
+                {% elsif page.show_resume_link %}
+                  <a href="{{ page.resume_course_url }}" class="btn btn-primary btn_resume_course">Resume Course</a>
+                {% elsif page.show_enroll_for_free_link %}
+                  <a href="{{ page.enroll_for_free_url }}" class="btn btn-primary btn-purchase">Enroll for Free</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  {% if page.course_has_description %}
+  <section class="product-overview">
+    <div class="column">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h2 class="section-title">
+            What you will find in this course
+          </h2>
+          {{ page.course_description }}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="course-curriculum">
+    <div class="column">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="row">
+          <h2 class="section-title">What you will learn</h2>
+              <ul class="nav nav-pills nav-stacked curriculum-chapter col-md-3 hidden-xs hidden-sm">
+
+                {% for chapter in page.course.chapters %}
+                  {% assign index = forloop.index + 1 %}
+                    {% if index == 1 %}
+                      <li class="active curriculum-chapter-header">
+                        <a data-toggle="pill" href="#chapter{{index}}" class="chapter-header">{{chapter.name}}</a>
+                        {% if chapter.duration_in_seconds > 0 %}
+                          <div class="chapter-time">
+                            {{ chapter.duration_in_seconds_as_time}}
+                          </div>
+                        {% endif %}
+                      </li>
+                    {% else %}
+                      <li class="curriculum-chapter-header">
+                        <a data-toggle="pill" href="#chapter{{index}}" class="chapter-header">{{chapter.name}}</a>
+                        {% if chapter.duration_in_seconds > 0 %}
+                          <div class="chapter-time">
+                            {{ chapter.duration_in_seconds_as_time}}
+                          </div>
+                        {% endif %}
+                      </li>
+                    {% endif %}
+                {% endfor %}
+
+              </ul>
+
+              <div class="tab-content col-md-7 col-md-offset-1 col-xs-12">
+
+                {% for chapter in page.course.chapters %}
+                  {% assign index = forloop.index + 1 %}
+                    {% if index == 1%}
+                      <div id="chapter{{index}}" class="tab-pane fade in active">
+                        <h3>
+                          {{chapter.name}}
+                        </h3>
+                        <h1 class="chapter-description">
+                          {{chapter.description}}
+                        </h1>
+
+                        {% for content in chapter.contents %}
+                          <div class="chapter-list-item">
+                            <span class="chapter-list-item__title">
+                              {{ content.name }}
+                              {% if content.free %}
+                                <span class="label label-free">FREE</span>
+                              {% endif %}
+                            </span>
+                            <i class="{{ content.icon_css_class }}"></i>
+                          </div>
+                        {% endfor %}
+
+                      </div>
+                    {% else %}
+                    <div id="chapter{{index}}" class="tab-pane fade in">
+                      <h3>
+                        {{chapter.name}}
+                      </h3>
+                      <h1 class="chapter-description">
+                        {{chapter.description}}
+                      </h1>
+
+                      {% for content in chapter.contents %}
+                        <div class="chapter-list-item">
+                          <span class="chapter-list-item__title">
+                            {{ content.name }}
+                            {% if content.free %}
+                              <span class="label label-free">FREE</span>
+                            {% endif %}
+                          </span>
+                          <i class="{{ content.icon_css_class }}"></i>
+                        </div>
+                      {% endfor %}
+
+                    </div>
+                    {% endif %}
+                {% endfor %}
+
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class='course-instructor'>
+    <div class='column'>
+      <div class='row'>
+        <div class='col-md-10 col-md-offset-1'>
+          <div class='instructor__img-wrap'>
+            <img alt="{{ page.course_instructor_full_name}}"
+                 class="instructor__img"
+                 src="{{ page.course_instructor_avatar_url }}" />
+          </div>
+          <div class='instructor__details'>
+            <div class='instructor__name'>
+              {{ page.course_instructor_full_name }}
+            </div>
+            <div class='instructor__title'>
+              {{ page.course_instructor_title }}
+            </div>
+          </div>
+          <div class='instructor__bio'>
+            {{ page.course_instructor_bio }}
+            {% if page.has_course_contact_information %}
+              <div class="course-contact-info">
+               {{ page.course_contact_information }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if page.reviews_enabled && page.approved_reviews_count > 0 %}
+    {% include "course_review" course:page.course %}
+  {% endif %}
+
+  <section class='product-body-button-block'>
+    <div class='product-main-cta'>
+      <div class='column'>
+        <div class='row'>
+          <div class='col-sm-12'>
+            {% if page.show_enroll_in_free_trial_link %}
+              <a href="{{ page.free_trial_enrollment_url }}" class="btn btn-secondary btn-top-free-trial">Free Trial</a>
+            {% endif %}
+            {% if page.show_purchase_link %}
+              <a href="{{ page.buy_course_url }}" class="btn btn-primary btn-purchase">Buy Now</a>
+            {% elsif page.show_resume_link %}
+              <a href="{{ page.resume_course_url }}" class="btn btn-primary btn_resume_course">Resume Course</a>
+            {% elsif page.show_enroll_for_free_link %}
+              <a href="{{ page.enroll_for_free_url }}" class="btn btn-primary btn-purchase">Enroll for Free</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {% include "related_products" %}
+</div>
+ {% include "course_footer_scripts" %}
