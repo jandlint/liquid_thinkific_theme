@@ -39,6 +39,15 @@
   padding-top: 90px;
 }
 
+.engage  {
+  position: absolute;
+  top: auto;
+  bottom: 20px;
+  margin-left: 50%;
+  font-size: 2em;
+  color: #5b5b5b;
+}
+
 .product-landing .section-title {
   margin-bottom: 24px;
 }
@@ -107,6 +116,10 @@
     display: none;
   }
 
+  .engage {
+    display: none;
+  }
+
   .product-landing .product-banner {
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://s3.amazonaws.com/thinkific/courses/showcase_000/008/1831448750942.original.jpg?1448750942') 70% 10% no-repeat;
     background-size: cover;
@@ -125,4 +138,9 @@
   .tab-content > .tab-pane {
     display: block;
   }
+
+  .fade {
+    opacity: 1;
+  }
+  /* end warning */
 }

@@ -1,0 +1,22 @@
+<script type="text/javascript">
+  var scrollTo = function(e) {
+    e.preventDefault();
+    var target = $(this).data('landing')
+    var location = $(target).offset().top;
+
+    $('html,body').animate({
+       scrollTop: location + 20
+    }, 500);
+  };
+
+  $(function() {
+    $("#status").on("change", function() {
+      var status = $(this).val();
+      if(status) {
+        $("#search-form").submit();
+      }
+    });
+
+    $('.engage').click(scrollTo);
+  });
+ </script>
