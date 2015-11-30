@@ -60,7 +60,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12">
           <div class="row">
-            <h2 class="section-title">What you will learn</h2>
+            <h2 class="section-title col-xs-12">What you will learn</h2>
             <ul class="nav nav-pills nav-stacked curriculum-chapter col-md-3 hidden-xs hidden-sm">
               {% for chapter in page.course.chapters %}
                 {% assign index = forloop.index + 1 %}
@@ -96,7 +96,7 @@
                         </h1>
                       {% endif %}
 
-                      {% for content in chapter.contents %}
+                      {% for content in chapter.contents limit:5 %}
                         <div class="chapter-list-item">
                           <span class="chapter-list-item__title">
                             {{ content.name }}
@@ -107,6 +107,26 @@
                           <i class="{{ content.icon_css_class }}"></i>
                         </div>
                       {% endfor %}
+
+                      {% if chapter.contents.size > 5 %}
+                        <a class="more-btn" role="button" data-toggle="collapse" href="#read{{index}}" aria-expanded="false" aria-controls="read{{index}}">
+                          read more
+                        </a>
+
+                        <div class="more__content collapse" id="read{{index}}">
+                          {% for content in chapter.contents offset:6 %}
+                            <div class="chapter-list-item">
+                              <span class="chapter-list-item__title">
+                                {{ content.name }}
+                                {% if content.free %}
+                                  <span class="label label-free">FREE</span>
+                                {% endif %}
+                              </span>
+                              <i class="{{ content.icon_css_class }}"></i>
+                            </div>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
                     </div>
               {% endfor %}
             </div>

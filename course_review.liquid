@@ -2,8 +2,8 @@
 
   <section class="column course-review">
     <div class="row">
-      <h4 class="section-title">
-        Reviews {{ course.approved_reviews_count }}
+      <h4 class="section-title col-xs-12">
+        Reviews ({{ course.approved_reviews_count }})
         <span class="star-rating" data-id="{{ course.average_rating }}">
           {% for index in (1..5) %}
             <input type="radio" name="rating" value="{{ index }}" />

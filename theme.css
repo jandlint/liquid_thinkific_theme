@@ -52,6 +52,10 @@
   min-height: 500px;
 }
 
+.more-btn {
+  margin-left: 15px;
+}
+
 .nav>li>a:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
@@ -82,8 +86,43 @@
   min-height: 350px;
 }
 
+@media only screen and (min-width: 970px) {
+  .section-title {
+    padding-left: 0;
+  }
+}
+
 @media only screen and (max-width: 970px) {
+  .navbar-default .navbar-brand,
+  .product-landing .product__title,
+  .product-landing .product__subtitle {
+    color: #ffffff;
+  }
+
   .navbar-default .navbar-collapse {
     background-color: #e7e7e7;
+  }
+
+  .hero-video {
+    display: none;
+  }
+
+  .product-landing .product-banner {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://s3.amazonaws.com/thinkific/courses/showcase_000/008/1831448750942.original.jpg?1448750942') 70% 10% no-repeat;
+    background-size: cover;
+  }
+
+  .tab-content {
+    min-height: 0;
+  }
+
+  .tab-pane h3 {
+    border-bottom: 1px solid #5b5b5b;
+    padding-bottom: 10px;
+  }
+
+  /* warning: disables the bootstrap pill on mobile */
+  .tab-content > .tab-pane {
+    display: block;
   }
 }
