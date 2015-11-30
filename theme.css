@@ -1,3 +1,10 @@
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li a,
+.product-landing .product__title,
+.product-landing .product__subtitle {
+  color: #5b5b5b;
+}
+
 .navbar {
   background-color: transparent;
   position: absolute;
@@ -7,9 +14,25 @@
 }
 
 .product-landing .product-banner {
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://s3.amazonaws.com/thinkific/courses/showcase_000/008/1831448750942.original.jpg?1448750942') 70% 10% no-repeat !important;
-  background-color: #56c0f8;
-  background-size: cover !important;
+  min-height: 100vh;
+  /* fallback */
+  background: url('https://s3.amazonaws.com/thinkific/file_uploads/4305/attachments/1d2/a05/c00/Head-or-Tails.jpg');
+  background-size: cover;
+}
+
+.product-info-block {
+  position: relative;
+  transform: translateY(50%);
+}
+
+.hero-video {
+  width: 100%;
+  position: absolute;
+}
+
+.product-landing section:first-child {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .product-landing .product-banner .title-block {
@@ -59,22 +82,8 @@
   min-height: 350px;
 }
 
-@media only screen and (min-width: 768px) {
-  .product-banner {
-    height: 500px;
-  }
-}
-
 @media only screen and (max-width: 970px) {
-  .product-banner {
-    height: 400px;
-  }
-
   .navbar-default .navbar-collapse {
     background-color: #e7e7e7;
-  }
-
-  .navbar-default .navbar-nav > li > a {
-    color: #5b5b5b;
   }
 }

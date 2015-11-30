@@ -1,0 +1,72 @@
+{% if course.reviews_enabled && course.approved_reviews_count > 0 %}
+
+  <section class="column course-review">
+    <div class="row">
+      <h4 class="section-title">
+        Reviews {{ course.approved_reviews_count }}
+        <span class="star-rating" data-id="{{ course.average_rating }}">
+          {% for index in (1..5) %}
+            <input type="radio" name="rating" value="{{ index }}" />
+            {% if index <= course.average_rating %}
+              <i></i>
+            {% endif %}
+          {% endfor %}
+        </span>
+      </h4>
+    </div>
+
+    <div class="row">
+      <div class="carousel slide" id="carousel" data-ride="carousel">
+        <ol class="carousel-indicators">
+          {% for review in course.course_reviews %}
+            {% assign index = forloop.index + 1 %}
+            {% if index == 1 %}
+              <li class="active" data-target="#carousel" data-slide-to="{{forloop.index}}"></li>
+            {% else %}
+              <li data-target="#carousel" data-slide-to="{{forloop.index}}"></li>
+            {% endif %}
+          {% endfor %}
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          {% for review in course.course_reviews %}
+            {% assign index = forloop.index + 1 %}
+            {% if index == 1 %}
+              <div class="course-review__container item active">
+            {% else %}
+              <div class="course-review__container item">
+            {% endif %}
+                <h3 class="course-review__title">
+                  {{ review.title }}
+                </h3>
+                <div class="course-review__name">
+                  by {{ review.user.full_name }}
+                </div>
+                <div class="course-review__stars">
+                  <span class="star-rating">
+                    {% for index in (1..5) %}
+                      <input type="radio" name"rating" value="{{index}}"  />
+                      {% if index <= review.rating %}
+                        <i></i>
+                      {% endif %}
+                    {% endfor %}
+                  </span>
+                </div>
+                <div class="course-review__text">
+                  {{ review.review_text }}
+                </div>
+              </div>
+          {% endfor %}
+        </div>
+        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+         <span class="sr-only">Next</span>
+       </a>
+      </div>
+    </div>
+
+  </section>
+{% endif %}
